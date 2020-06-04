@@ -5,11 +5,16 @@ html{
 body {
   margin:0px;
   padding:70px 0px 15px 0px;
-  min-width:1200px;
   min-height:600px;
   font-family: sans-serif;
-  color:#333;
-  background: url(globe-glow3.jpg) repeat-x top center; 
+  color:#000;
+  background: url(bg.jpg) no-repeat center center fixed; 
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  
+  
   background-color:#FFF;
 }
 
@@ -42,14 +47,14 @@ body {
   font-size:42pt;
   margin:7% auto 10pt auto;
   width:600px;
-  color:#777;
+  color:#00f;
 }
 #header h2{
   text-align:center;
   font-family:"Arial";
   font-size:16pt;
   margin:5pt;
-  color:#777;
+  color:#00f;
 }
 #form {
   margin-top:0px;
@@ -106,7 +111,7 @@ input.linkShare {
 a {
   text-decoration:none;
   border-bottom: 1px black dotted;
-  color:#333;
+  color:#00d;
 }
 a:hover{
   text-decoration:underline;
@@ -163,7 +168,7 @@ a:active{
 #balance a, #orders span{ white-space:nowrap; }
 .issuerLabels { font-size:10pt; }
 
-#errors { width:80%; margin:auto; padding-top:5px; padding-bottom:5px; font-size:12pt; font-weight:bold; color:#555;}
+#errors { width:80%; margin:auto; padding-top:5px; padding-bottom:5px; font-size:12pt; font-weight:bold; color:#ddd;}
 #setDisplayNameError { font-weight:bold; text-align:center;}
 .ui-autocomplete {
   max-height: 100px;
@@ -174,7 +179,7 @@ a:active{
 
 #about{
   margin-top:100px;
-  color:#777; 
+  color:#00f; 
   min-height:100%; 
   max-height: 999999px;
   width:100%;
@@ -182,11 +187,11 @@ a:active{
   opacity:.9;
 }
 #about a{
-  color:#777; 
+  color:#00f; 
   font-weight:bold;
   border-width:0px 0px 1px 0px;
   border-style: dotted;
-  border-color:#777;
+  border-color:#00f;
 }
 #about a:hover {
   border-width:0px 0px 2px 0px;
@@ -206,14 +211,14 @@ a:active{
   text-align:center;
   font-size:30pt;
   margin:auto;
-  color:#888;
+  color:#fff;
 }
 #about h4 {
   font-weight:normal;
   text-align:center;
   margin:10px 0px 20px 0px;
   font-size:14pt;
-  color:#888;
+  color:#fff;
 }
 #about h5 {
   text-align:center;
@@ -222,7 +227,7 @@ a:active{
   padding-top:30px;
   padding-bottom:10px;
   font-size:16pt;
-  color:#888;
+  color:#fff;
 }
 
 #loginBackground {
