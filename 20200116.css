@@ -1,5 +1,4 @@
 html{
-  min-width:1200px;
   min-height:600px;
 }
 body {
@@ -8,13 +7,13 @@ body {
   min-height:600px;
   font-family: sans-serif;
   color:#000;
-  background: url(bg.jpg) no-repeat center center fixed; 
+  background: url(bg.jpg) no-repeat center center fixed;
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
   background-size: cover;
-  
-  
+
+
   background-color:#FFF;
 }
 
@@ -25,7 +24,6 @@ body {
 #container{
   width:100%;
   height:100%;
-  min-width:1200px;
   min-height:600px;
   z-index:100;
   /*overflow:hidden;*/
@@ -143,7 +141,7 @@ a:active{
   text-align:left;
   font-size:12pt;
   padding-top:2px;
-  padding-left:5px; 
+  padding-left:5px;
 }
 #tutorials ul{
   margin:0px;
@@ -179,15 +177,15 @@ a:active{
 
 #about{
   margin-top:100px;
-  color:#00f; 
-  min-height:100%; 
+  color:#00f;
+  min-height:100%;
   max-height: 999999px;
   width:100%;
-  z-index:9999; 
+  z-index:9999;
   opacity:.9;
 }
 #about a{
-  color:#00f; 
+  color:#00f;
   font-weight:bold;
   border-width:0px 0px 1px 0px;
   border-style: dotted;
@@ -389,7 +387,7 @@ a:active{
   text-align:right;
 }
 
-#scrollingText 
+#scrollingText
 {
   width: 800px;
   height: 36px;
@@ -416,7 +414,7 @@ a:active{
   padding-top: 1px;
   font-size: 13pt;
   line-height: 22pt;
-  font-weight: normal; 
+  font-weight: normal;
   white-space: nowrap;
   overflow:hidden;
 }
@@ -588,25 +586,22 @@ a:active{
 }
 
 @media only screen and (max-device-width: 480px) {
-  
+
   html {
-    min-width:960px;
   }
   body {
     max-height: 999999px;
-    min-width:960px;
     padding:0px;
   }
-  
+
   #particles-js{
     display:none;
   }
   #container {
     position:static;
     overflow:hidden;
-    min-width:960px;
   }
-  
+
   #containerpadding {
     padding: 0px 0px 0px 0px;
     height:100%;
@@ -625,7 +620,7 @@ a:active{
   #header h2 {
     font-size:24pt;
   }
-  
+
   a {
     text-decoration:underline;
     border-bottom: 0px;
@@ -633,7 +628,7 @@ a:active{
   a:hover{
     text-decoration:none;
   }
-  
+
   #scrollingText {
     height:50px;
   }
@@ -664,7 +659,7 @@ a:active{
   #trade input.recipient {
     width:25%;
   }
-  
+
   .issuerLabels { font-size:14pt; }
   #destTagDisplay { display:none; }
   #orderbook {  padding-top: 0px; }
@@ -675,18 +670,18 @@ a:active{
   #navigation, #subnavigation, #infoBar{ width:100%; }
   #navigation, #subnavigation{ margin:auto; text-align:center; padding:0px; }
   #subnavigation table  { width: 99%; margin:auto; text-align:center; }
-  
+
   #tutorials{
     display:none;
   }
-  
+
   #miscMenu {
     display:none;
   }
   #miscMenu, #miscMenu div {
     text-align:center;
   }
-  
+
   #controlMiscMenu {
     display:block;
     text-align:center;
@@ -701,11 +696,11 @@ a:active{
     opacity:0.95;
     border-width:0px;
   }
-  
+
   #chatHeader {
     font-size:20pt;
   }
-  
+
   #chatHistory {
     height:84%;
     font-size:30pt;
@@ -730,7 +725,7 @@ a:active{
   #sendChat {
     width:15%;
   }
-  
+
   #profilebox {
     bottom:0px;
     left:0px;
@@ -741,11 +736,11 @@ a:active{
     border-width:0px;
     font-size:30pt;
   }
-  
+
   #profileboxHeader {
     font-size:20pt;
   }
-  
+
   #profileboxContents {
     font-size:30pt;
     max-height:99999999999px;
@@ -765,20 +760,20 @@ a:active{
     max-height:99999999999px;
     min-height:1px;
   }
-  
-  
+
+
   #account { width:50%; }
   #balance, #orders { width: 100%; text-align:left; padding:0px; margin:0px; max-height:100px;}
   #footer, #footer h2 {
     font-size:14pt;
   }
-  
+
   #errors {  font-size:16pt; }
-  
+
   .popup{
-    width:800px;  
+    width:800px;
     height:900px;
-    margin-left:-430px;  
+    margin-left:-430px;
     margin-top:-430px;
     font-size:20pt;
     -webkit-text-size-adjust: none;
@@ -791,7 +786,7 @@ a:active{
     font-size:20pt;
     max-height: 999999px;
   }
-  
+
   .info {
     height: 600px;
     -webkit-text-size-adjust: none;
@@ -800,17 +795,17 @@ a:active{
     min-height: 1px;
     max-height: 999999px;
   }
-  
-  
+
+
   #issuerInfo{
     height: 420px;
   }
-  
+
   .issuerSettings{
     height: 150px;
   }
-  
-  
+
+
   .popup td.right{
     width:65%;
   }
@@ -824,11 +819,11 @@ a:active{
     min-height: 1px;
     max-height: 999999px;
   }
-  
+
   #destinationTagInfo {
     height: 500px;
   }
-  
+
   #disclaimerAgreement {
     font-size:20pt;
   }
@@ -836,7 +831,7 @@ a:active{
     height:20px;
     width:20px;
   }
-  
+
   #about p, #about ul{
     font-size:20pt;
   }
@@ -849,11 +844,11 @@ a:active{
   #about h5 {
     font-size:20pt;
   }
-  
+
   input.linkShare {
     width:70%;
   }
-  
+
   .trustlineFields{
     max-height: 400px;
   }

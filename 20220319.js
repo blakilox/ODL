@@ -1,5 +1,5 @@
 /*
-  All code below developed by pftq and distributed by Autodidactic I (www.autodidactic.ai).
+  All code below developed by pftq and distributed by Autodidactic Studios (www.autodidactic.ai).
   Do not copy or re-distribute without permission.
   © 2016 The World Exchange | contact@theworldexchange.net
   
@@ -8,10 +8,11 @@
 
 // Servers added to the list are selected from at random to distribute load across the network
 var servers = [
-  'wss://s1.ripple.com/',
+  'wss://xrplcluster.com/',
+  //'wss://s1.ripple.com/',
   //'wss://s2.ripple.com/',
-  'wss://s-east.ripple.com/',
-  'wss://s-west.ripple.com/'
+  //'wss://s-east.ripple.com/',
+  //'wss://s-west.ripple.com/'
 ];
 
 // Configurables
@@ -41,6 +42,7 @@ var majorIssuers = {
 
 // Known issuers; doesn't matter what you put here, updates dynamically via Ripple Data API
 var issuers = {
+	"RLUSD": ["rMxCKbEDwqr76QuheSUMdEGf4B9xJ8m5De"],
     "BTC": ["rvYAfWj5gh67oV6fW32ZzP3Aw4Eubs59B"],
     "CNY": ["rKiCet8SdvWxPXnAgYarFUXMh1zCPz432Y"],
     "ETH": ["rcA8X3TVMST1n3CJeAdGk1RdRCHii7N2h"],
@@ -51,6 +53,7 @@ var issuers = {
     "USD": ["rvYAfWj5gh67oV6fW32ZzP3Aw4Eubs59B", "rhub8VRN55s94qWKDv6jmDy1pUykJzF3wq"],
     "XAG": ["r9Dr5xwkeLegBeXq6ujinjSBLQzQ1zQGjH"],
     "XAU": ["r9Dr5xwkeLegBeXq6ujinjSBLQzQ1zQGjH"],
+	  "SCX": ["rP8aWmVb4JVhMXmT4BmLrNRLAygHUh3jm8"],
     "XRP": []
 };
 
@@ -123,6 +126,7 @@ var trustlines = {
 // state variable for current account flags
 var settings = {
     "defaultRipple":false,
+    "depositAuth":false,
     "disableMasterKey":false,
     "disallowIncomingXRP":false,
     "enableTransactionIDTracking":false,
@@ -138,6 +142,7 @@ var settings = {
 // default settings for each flag
 var defaultSettings = {
     "defaultRipple":false,
+    "depositAuth":false,
     "disableMasterKey":false,
     "disallowIncomingXRP":false,
     "enableTransactionIDTracking":false,
@@ -1382,8 +1387,8 @@ function loadOrderbook(updateMessageOnly, repeat) {
           errored=true;
           var qrsize = 196;
           if(isMobile()) qrsize = 256;
-          $("#errors").html("Send to others by inputting their account address above.<br />For non-XRP, make sure they set their <a href='#' onclick='aboutReceivables(); return false;'>Receivable Tokens</a> list.<br /><br />To receive or let others send to you, share the below link or QR Code:<br /><input type='text' value='https://www.theworldexchange.net/?action=send&amp;recipient="+address+(destTag==""? "":"&amp;destTag="+destTag)+($("#qty1").val()==""? "":"&amp;qty1="+$("#qty1").val())+($("#symbol1").val()==""? "":"&amp;symbol1="+$("#symbol1").val()+(issuer1==""? "":"."+issuer1))+"' onclick='this.select();' readonly='readonly' class='linkShare' /><br /><br /><div id='qrcode' style='text-align:center; margin:auto; width:"+qrsize+"px;'> </div>"+(address==""? "<br />(Note: <a href='#' onclick='showLogin(); return false;'>Login</a> first to get a valid link/QR with your address.)":""));
-          new QRCode(document.getElementById("qrcode"), {text:"https://www.theworldexchange.net/?action=send&recipient="+address+(destTag==""? "":"&destTag="+destTag)+($("#qty1").val()==""? "":"&qty1="+$("#qty1").val())+($("#symbol1").val()==""? "":"&symbol1="+$("#symbol1").val()+(issuer1==""? "":"."+issuer1)), width:qrsize, height:qrsize});
+          $("#errors").html("Send to others by inputting their account address above.<br />For non-XRP, make sure they set their <a href='#' onclick='aboutReceivables(); return false;'>Receivable Tokens</a> list.<br /><br />To receive or let others send to you, share the below link or QR Code:<br /><input type='text' value='https://odl.exchange/?action=send&amp;recipient="+address+(destTag==""? "":"&amp;destTag="+destTag)+($("#qty1").val()==""? "":"&amp;qty1="+$("#qty1").val())+($("#symbol1").val()==""? "":"&amp;symbol1="+$("#symbol1").val()+(issuer1==""? "":"."+issuer1))+"' onclick='this.select();' readonly='readonly' class='linkShare' /><br /><br /><div id='qrcode' style='text-align:center; margin:auto; width:"+qrsize+"px;'> </div>"+(address==""? "<br />(Note: <a href='#' onclick='showLogin(); return false;'>Login</a> first to get a valid link/QR with your address.)":""));
+          new QRCode(document.getElementById("qrcode"), {text:"https://odl.exchange/?action=send&recipient="+address+(destTag==""? "":"&destTag="+destTag)+($("#qty1").val()==""? "":"&qty1="+$("#qty1").val())+($("#symbol1").val()==""? "":"&symbol1="+$("#symbol1").val()+(issuer1==""? "":"."+issuer1)), width:qrsize, height:qrsize});
           refreshLayout();
       }
       else refreshLayout();
@@ -1586,7 +1591,7 @@ function loadOrderbook(updateMessageOnly, repeat) {
 
 // The help text after you issued a token
 function getIssuedText() {
-  return "Share the below link to let others trade your "+symbol1+" token:<br /><input type='text' value='https://www.theworldexchange.net/?symbol1="+symbol1+"."+address+"&amp;symbol2="+(issuer2==""? symbol2:symbol2+"."+issuer2)+"' onclick='this.select();' readonly='readonly' class='linkShare' /><br /><br />"+(settings["defaultRipple"]? "Your settings allow token holders to both trade and send to others.<br />To disallow sending so users can only trade in the open market, click <a href='#' onclick='updateDefaultRipple(false);  return false;'>here</a>.":"Your settings only allow token holders to trade but not send to others.<br />To allow users to send to others as well, click <a href='#' onclick='updateDefaultRipple(true);  return false;'>here</a>.");
+  return "Share the below link to let others trade your "+symbol1+" token:<br /><input type='text' value='https://odl.exchange/?symbol1="+symbol1+"."+address+"&amp;symbol2="+(issuer2==""? symbol2:symbol2+"."+issuer2)+"' onclick='this.select();' readonly='readonly' class='linkShare' /><br /><br />"+(settings["defaultRipple"]? "Your settings allow token holders to both trade and send to others.<br />To disallow sending so users can only trade in the open market, click <a href='#' onclick='updateDefaultRipple(false);  return false;'>here</a>.":"Your settings only allow token holders to trade but not send to others.<br />To allow users to send to others as well, click <a href='#' onclick='updateDefaultRipple(true);  return false;'>here</a>.");
 }
 
 // Update the URL depending on what we put in the forms
